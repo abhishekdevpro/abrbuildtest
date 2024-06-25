@@ -127,18 +127,27 @@ const Template1 = ({
         <a href={del.projects || '#'}>{del.projects || predefinedText.details.projects}</a>
       </li>
     </ul>
-    {summary.map((sum, index) => (
-              <div key={index}>
+    {summary.length > 0 ? (
+              summary.map((sum, index) => (
+                <div key={index}>
+                  <p
+                    className={`${paragraphSpacingClass} text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
+                    dangerouslySetInnerHTML={{ __html: sum.summarydescription }}
+                  />
+                  <br />
+                </div>
+              ))
+            ) : (
+              <div>
                 <p
                   className={`${paragraphSpacingClass} text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
-                  dangerouslySetInnerHTML={{ __html: sum.summarydescription || predefinedText.sum.summarydescription }}
+                  dangerouslySetInnerHTML={{ __html: predefinedText.summary.summarydescription }}
                 />
                 <br />
               </div>
-            ))}
-    
-  </div>
-))}
+            )}
+          </div>
+        ))}
 
 
 
