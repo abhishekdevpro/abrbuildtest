@@ -41,11 +41,11 @@ const Slider = ({
 
   return (
     <div className="h-full pb-80 justify-center" style={{ backgroundColor: '#333456', color: '#F2931C'}}>
-      <div className='pt-14 ps-16'>
+      <div className='pt-14 '>
         <img src={logo}  className='w mb-10'style={{ width:'130px'}} alt="" />
       </div>
-      <div className="px- py-3 flex ps-10">
-        <ul className="space-y-4 ">
+      <div className="px- py-3 flex ps-1">
+        <ul className="space-y-3 ">
           {sections.map((section, index) => (
             <li
               key={index}
@@ -53,20 +53,20 @@ const Slider = ({
               onClick={() => setCurrentStep(index)}
             >
               <div className="relative">
-                <div className={`rounded-full px-2 border-2 ${currentStep === index ? 'text-black' : ''}`}>{index + 1}</div>
+                <div className={`rounded-full px-2 border-2  ${currentStep === index ? 'text-black ' : ''}`}>{index + 1}</div>
                 {index !== sections.length - 1 && (
-                  <div className="h-4 w-px bg-white absolute top-8 left-1/2 transform -translate-x-1/2"></div>
+                  <div className="h-3 w-px bg-white absolute top-8 left-1/2 transform -translate-x-1/2  "></div>
                 )}
               </div>
             </li>
           ))}
         </ul>
-        <ul className="space-y-6  ">
+        <ul className="space-y-5  ">
           {sections.map((section, index) => (
             <li
               key={index}
-              className={`cursor-pointer align-middle px-1 ${
-                currentStep === index ? 'font-semibold text-white' : 'hover:text-blue-800 text-white'
+              className={`cursor-pointer align-middle px-1 text-sm ${
+                currentStep === index ? 'font-semibold text-white text-sm' : 'hover:text-blue-800 text-white'
               }`}
               onClick={() => setCurrentStep(index)}
             >
@@ -75,7 +75,7 @@ const Slider = ({
           ))}
         </ul>
       </div>
-      <div className="px-7 mt-10 mb-40">
+      <div className="px-2 mt-10 mb-40">
         <p className="text-white mb-1 text-xs">RESUME PROGRESS {progress}%</p>
         <div className="bg-white h-2 w-full rounded-full">
           <div className="bg-blue-500  h-2 rounded-full" style={{ width: `${progress}%` }}></div>

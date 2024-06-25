@@ -71,29 +71,29 @@ const Template1 = ({
 
   return (
     <div
-      className={`border-2 border-gray-300 p-7 ${textSizeClass} ${sectionSpacingClass} ${lineHeightClass}`}
+      className={`border-2  border-gray-300 p-7 ${textSizeClass} ${sectionSpacingClass} ${lineHeightClass}`}
       style={{ fontFamily: font }}
     >
       {/* Red circle indicating all fields are filled */}
       {!isPreviewScreen && !isTemplate1Previewing && (
         <div className="">
           {allDetailsFilled && (
-            <div className="w-7 h-7 ps-2.5 mt-3 bg-white rounded-2xl absolute top-48 left-10 font-bold">1</div>
+            <div className="w-7 h-7 ps-2.5 mt-1.5 bg-white rounded-2xl absolute top-48 left-1 font-bold">1</div>
           )}
           {allDetailsFilled2 && (
-            <div className="w-7 h-8 ps-2.5 pt-0.5 mt-2 bg-white rounded-2xl absolute top-60 left-10 font-bold">2</div>
+            <div className="w-7 h-8 ps-2.5 pt-0.5  mt-3.5 bg-white rounded-2xl absolute top-56 left-1 font-bold">2</div>
           )}
           {allDetailsFilled3 && (
-            <div className="w-7 h-8 ps-2.5 pt-0.5 mt-2 bg-white rounded-2xl absolute top-72 left-10 font-bold">3</div>
+            <div className="w-7 h-8 ps-2.5 pt-0.5 mt-11  bg-white rounded-2xl absolute top-60 left-1 font-bold">3</div>
           )}
           {allDetailsFilled4 && (
-            <div className="w-7 h-8 ps-2.5 mt-6 bg-white rounded-2xl absolute top-80 left-10 font-bold">4</div>
+            <div className="w-7 h-7 ps-2.5 mt-2 bg-white rounded-2xl absolute top-80 left-1 font-bold">4</div>
           )}
           {allDetailsFilled5 && (
-            <div className="w-7 h-7 ps-2.5 mt-14 bg-white rounded-2xl absolute top-96 left-10 font-bold">6</div>
+            <div className="w-7 h-7 ps-2.5 mt-8 bg-white rounded-2xl absolute top-96 left-1 font-bold">6</div>
           )}
           {allDetailsFilled6 && (
-            <div className="w-7 h-7 ps-2.5 mt-2 bg-white rounded-2xl absolute top-96 left-10 font-bold">5</div>
+            <div className="w-7 h-8 ps-2.5 pt-1 mt-28 bg-white rounded-2xl absolute top-64 left-1 font-bold">5</div>
           )}
         </div>
       )}
@@ -102,16 +102,16 @@ const Template1 = ({
         {/* User details */}
 {details.map((del, index) => (
   <div key={index}>
-    <h3 className="text-xs sm:text-sm md:text-2xl lg:text-3xl text-cyan-600 font-bold ms-2">
+    <h3 className="text-xs sm:text-sm md:text-2xl lg:text-3xl text-cyan-600 font-bold ms-2 ">
       {del.name || predefinedText.details.name}
     </h3>
     <p className="text-xs sm:text-sm md:text-xl lg:text-lg ms-2">
       {del.Profession || predefinedText.details.profession}
     </p>
-    {del.image}
-    <ul className="flex text-xs sm:text-sm md:text-xs lg:text-xs m-2 gap-2">
+
+    <ul className="flex  text-xs sm:text-sm md:text-sm lg:text-sm m-2 gap-2">
       <li>{del.address || predefinedText.details.address}</li>
-      <li className={`${del.phoneNumber ? 'before:content-["●"] before:m-2 font' : ''} w-2/2 break-all`}>
+      <li className={`${del.phoneNumber ? 'before:content-["●"] before:m-2 font' : ''}  break-all`}>
         {del.phoneNumber || predefinedText.details.phoneNumber}
       </li>
       <li className={`${del.email ? 'before:content-["●"] before:m-2' : ''} w-2/2 break-all`}>
@@ -128,13 +128,14 @@ const Template1 = ({
       </li>
     </ul>
     {summary.map((sum, index) => (
-      <div key={index}>
-        <p className={`${paragraphSpacingClass} text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}>
-          {sum.summarydescription || predefinedText.summary.summarydescription}
-        </p>
-        <br />
-      </div>
-    ))}
+              <div key={index}>
+                <p
+                  className={`${paragraphSpacingClass} text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
+                  dangerouslySetInnerHTML={{ __html: sum.summarydescription || predefinedText.sum.summarydescription }}
+                />
+                <br />
+              </div>
+            ))}
     
   </div>
 ))}
@@ -148,19 +149,19 @@ const Template1 = ({
     <div key={index}>
       <div className="flex justify-between">
         <h6 className="font-bold break-all">{exp.Company || predefinedText.experiences.company}</h6>
-        <p>{exp.month1} - {exp.month2}</p>
+        <p className=' text-xs sm:text-sm md:text-sm lg:text-sm'>{exp.month1} - {exp.month2}</p>
       </div>
       <div className="flex justify-between">
-        <h6>{exp.role ||  predefinedText.experiences.role }</h6>
-        <p>{exp.companyplace ||  predefinedText.experiences.companyplace}</p>
+        <h6 className=' text-xs sm:text-sm md:text-sm lg:text-sm'>{exp.role ||  predefinedText.experiences.role }</h6>
+        <p className=' text-xs sm:text-sm md:text-sm lg:text-sm'>{exp.companyplace ||  predefinedText.experiences.companyplace}</p>
       </div>
-      <ul className="m-2">
+      <ul className="m-2  text-xs sm:text-sm md:text-sm lg:text-sm">
         {exp.companydescription && exp.companydescription || predefinedText.experiences.companydescription.split(/\r?\n/).map((line, i) => (
           <li
             key={i}
             className={`${paragraphSpacingClass} ${
               line.trim() ? 'before:content-["•"] before:mr-1' : ''
-            } text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
+            }  text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
           >
             {line}
           </li>
@@ -182,12 +183,12 @@ const Template1 = ({
           <div key={index}>
             <div className="flex justify-between">
               <h6 className="font-bold break-all">{edu.schoolname || predefinedText.educations.schoolname}</h6>
-              <p>{edu.edmonth1} - {edu.edmonth2}</p>
+              <p className=' text-xs sm:text-sm md:text-sm lg:text-sm'>{edu.edmonth1} - {edu.edmonth2}</p>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between  text-xs sm:text-sm md:text-sm lg:text-sm">
               <h6>{edu.schoolplace || predefinedText.educations.schoolplace}</h6>
             </div>
-            <p>{edu.coursename  || predefinedText.educations.coursename}</p>
+            <p className=' text-xs sm:text-sm md:text-sm lg:text-sm'>{edu.coursename  || predefinedText.educations.coursename}</p>
           </div>
         ))}
 

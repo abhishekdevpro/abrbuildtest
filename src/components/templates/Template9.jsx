@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import profilephoto from '../images/profilephoto.png';
 const Template9 = ({
+  image,
   data = {},
   boxBgColor,
   font,
@@ -61,25 +62,25 @@ const Template9 = ({
 
   return (
     <div className={`border break-all  ${textSizeClass} ${sectionSpacingClass} ${lineHeightClass}`} style={{ fontFamily: font }}>
-      {!isPreviewScreen && !isTemplate1Previewing && (
+      {!isPreviewScreen  && (
         <div className="">
           {allDetailsFilled && (
-            <div className="w-7 h-7 ps-2.5  mt-3 bg-white rounded-2xl absolute top-48 left-10 font-bold">1</div>
+            <div className="w-7 h-7 ps-2.5 mt-1.5 bg-white rounded-2xl absolute top-48 left-1 font-bold">1</div>
           )}
           {allDetailsFilled2 && (
-            <div className="w-7 h-8 ps-2.5 pt-0.5 mt-2 bg-white rounded-2xl absolute top-60 left-10 font-bold">2</div>
+            <div className="w-7 h-8 ps-2.5 pt-0.5  mt-3.5 bg-white rounded-2xl absolute top-56 left-1 font-bold">2</div>
           )}
           {allDetailsFilled3 && (
-            <div className="w-7 h-8 ps-2.5 pt-0.5 mt-2 bg-white rounded-2xl absolute top-72 left-10 font-bold">3</div>
+            <div className="w-7 h-8 ps-2.5 pt-0.5 mt-11  bg-white rounded-2xl absolute top-60 left-1 font-bold">3</div>
           )}
           {allDetailsFilled4 && (
-            <div className="w-7 h-8 ps-2.5  mt-6 bg-white rounded-2xl absolute top-80 left-10 font-bold">4</div>
+            <div className="w-7 h-7 ps-2.5 mt-2 bg-white rounded-2xl absolute top-80 left-1 font-bold">4</div>
           )}
           {allDetailsFilled5 && (
-            <div className="w-7 h-7 ps-2.5  mt-14 bg-white rounded-2xl absolute top-96 left-10 font-bold">6</div>
+            <div className="w-7 h-7 ps-2.5 mt-8 bg-white rounded-2xl absolute top-96 left-1 font-bold">6</div>
           )}
           {allDetailsFilled6 && (
-            <div className="w-7 h-7 ps-2.5  mt-2  bg-white rounded-2xl absolute top-96 left-10 font-bold">5</div>
+            <div className="w-7 h-8 ps-2.5 pt-1 mt-28 bg-white rounded-2xl absolute top-64 left-1 font-bold">5</div>
           )}
         </div>
       )}
@@ -88,7 +89,7 @@ const Template9 = ({
         <div className="md:w-1/ md:p-4 bg-slate-100 text-white overflow-auto justify-center " style={{ backgroundColor: boxBgColor }}>
           <div>
             <div className="w-32 h-32 border-blue-950 bg-white rounded-full border-8 text-center break-all">
-            <img src={profilephoto} alt="" style={{height:'112px',width:'112px'}} className='rounded-full'/>
+            <img src={image || profilephoto} alt="" style={{height:'112px',width:'112px'}} className='rounded-full'/>
             </div>
             <h5 className=' text-sm pt-5'>CONTACT </h5>
             <div className="flex-grow  border-t border-white align-super mt-3"></div>
@@ -157,9 +158,12 @@ const Template9 = ({
   <div className="flex-grow border-t border-gray-900 align-super"></div>
   {summary.map((sum, index) => (
     <div key={index}>
-      <p className={`${paragraphSpacingClass} text-sm md:text-sm lg:text-sm  w-2/2 break-all`}>{sum.summarydescription || predefinedText.summary.summarydescription}</p>
-      <br />
-    </div>
+    <p
+      className={`${paragraphSpacingClass} text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
+      dangerouslySetInnerHTML={{ __html: sum.summarydescription || predefinedText.summary.summarydescription }}
+    />
+    <br />
+  </div>
   ))}
   <h5 className='font-bold mb-2'>Work Experience </h5>
   <div className="flex-grow border-t border-gray-900 align-super"></div>

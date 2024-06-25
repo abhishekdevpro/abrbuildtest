@@ -1,7 +1,7 @@
 const Education = ({ educations = [], handleInputChange, addEducation, deleteEducation }) => {
   return (
 
-    <div className="mt-10 px-20">
+    <div className="mt-10 px-20 text-xs sm:text-xs md:text-xs lg:text-xs">
       <h3 className="flex justify-between font-bold text-lg mt-4">Awards and Training, Education, 
     Certifications, and Accolades:</h3>
 

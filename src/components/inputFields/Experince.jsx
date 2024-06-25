@@ -30,7 +30,7 @@ const Experience = ({ experiences = [], handleInputChange, addExperience, delete
   };
 
   return (
-    <div className='mt-4'>
+    <div className='mt-4 text-xs sm:text-xs md:text-xs lg:text-xs'>
       <div className="px-20 w-full">
         {experiences.map((exp, index) => (
           <div key={index} className="flex mt-4">

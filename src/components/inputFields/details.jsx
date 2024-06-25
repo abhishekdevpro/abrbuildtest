@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Formheader from '../forms/Formheader';
 
-function Details({ details = [], handleInputChange }) {
+function Details({ details = [], handleInputChange, image, setImage }) {
   const [showGithub, setShowGithub] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [showLanguage, setShowLanguage] = useState(false);
   const [showAchievement, setShowAchievement] = useState(false);
-  const [image, setImage] = useState(null);
+  //const [image, setImage] = useState(null);
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
+
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
     if (file) {
-      reader.readAsDataURL(file);
+      const url = URL.createObjectURL(file);
+      setImage(url);
     }
   };
+console.log(image);
+
 
   useEffect(() => {
     const imageInput = document.getElementById('profilePicture');
@@ -85,10 +86,10 @@ function Details({ details = [], handleInputChange }) {
 
   return (
     <>
-      <div className="font-thin ">
+      <div className="font-thin  text-xs sm:text-xs md:text-xs lg:text-xs">
         <div className='px-10 mt-7'>
-          <h1 className='text-3xl font-semibold mb-3 '>What’s the best way for employers to contact you?</h1>
-          <h1 className='text-sm'>We suggest including an email and phone number.</h1>
+          <h1 className='text-2xl font-semibold mb-3 '>What’s the best way for employers to contact you?</h1>
+          <h1 className='text-xs'>We suggest including an email and phone number.</h1>
           <h6 className='font-bold text-xs my-4 '>* indicates a required field</h6>
         </div>
         {areAllDetailsFilled() && (
@@ -99,7 +100,7 @@ function Details({ details = [], handleInputChange }) {
             <div className="m-2 px-10  gap-3 w-full">
               <div className="">
                 <div className="flex gap-10 justify-around ">
-                  <div className="w-3/5 justify-center px-14">
+                  <div className="w-3/5 justify-center px-10">
                     {image ? (
                       <img
                         src={image}
@@ -202,7 +203,7 @@ function Details({ details = [], handleInputChange }) {
                                       </div>
                                       <div className="w-3/4">
                                         <label htmlFor="link" className="block text-sm font-medium text-gray-700 mb-2">
-                                          link:
+                                          Linkdin:
                                         </label>
                                         <input
                                           type="text"

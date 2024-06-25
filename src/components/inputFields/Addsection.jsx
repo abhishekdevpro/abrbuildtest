@@ -3,7 +3,7 @@ import React from 'react';
 
 const Addsection = ({ Addsection = [], handleInputChange, Addsectionclick, deletesection ,selectedTemplate,setSelectedTemplate}) => {
   return (
-    <div className="mt-10">
+    <div className="mt-10 text-xs sm:text-xs md:text-xs lg:text-xs">
       
       {Addsection.map((Addsection1, index) => (
         <div key={index} className=" relative mt-4">

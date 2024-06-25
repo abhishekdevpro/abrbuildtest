@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import Formheader from '../forms/Formheader';
 
 function Summary({ summary = [], handleInputChange }) {
@@ -8,17 +10,13 @@ function Summary({ summary = [], handleInputChange }) {
     setShowSearch(!showSearch);
   };
 
- 
   return (
     <>
-      <div className="font-thin ">
-       
+      <div className="font-thin text-xs sm:text-xs md:text-xs lg:text-xs">
         {summary.map((sum, index) => (
-          <div key={index} className="flex  mt-10 justify-center">
+          <div key={index} className="flex mt-10 justify-center">
             <div className="m-2 px-10 flex gap-3 w-3/">
-              <div className="">
-                
-               
+              <div>
                 <div className="flex justify-between font-bold text-lg my-4">
                   <h1 className='text-xl'>Professional Summary</h1>
                   <div>
@@ -36,11 +34,10 @@ function Summary({ summary = [], handleInputChange }) {
                     </button>
                     {showSearch && (
                       <div className="flex mt-2 w-96 p-2 h-20 bg-white border border-gray-300 rounded-lg shadow-2xl z-10 gap-2">
-                        {/* Search input with magnifying glass */}
                         <div className="relative">
                           <input
                             type="text"
-                            className="block w-full pl-8 pr-4 py-2 text-sm focus:outline-none  "
+                            className="block w-full pl-8 pr-4 py-2 text-sm focus:outline-none"
                           />
                           <svg
                             className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
@@ -64,16 +61,16 @@ function Summary({ summary = [], handleInputChange }) {
                     )}
                   </div>
                 </div>
-                <div className="my-4  mb-10 font-normal">
-                  Write 2-5 Sentences that highlight the value you can provide to a team and organization. Mention your previous role, experience & most importantly - your biggest achievements, best qualities, and skills
+                <div className="my-4 mb-10 font-normal">
+                  Write 2-5 Sentences that highlight the value you can provide to a team and organization. Mention your previous role, experience & most importantly - your biggest achievements, best qualities, and skills.
                 </div>
-                <input
-                  type="text"
-                  name="summarydescription"
+                <ReactQuill
+                  theme="snow"
                   value={sum.summarydescription}
-                  onChange={(e) => handleInputChange(e, index, 'summary')}
-                  className="w-full h-40 p-2 mb-4 border border-black rounded-lg"
+                  onChange={(content) => handleInputChange({ target: { value: content, name: 'summarydescription' } }, index, 'summary')}
+                  className="w-full h-40 p-2 mb-4 break-all"
                 />
+                
               </div>
             </div>
           </div>
@@ -84,4 +81,3 @@ function Summary({ summary = [], handleInputChange }) {
 }
 
 export default Summary;
-

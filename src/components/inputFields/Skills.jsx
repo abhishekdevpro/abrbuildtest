@@ -2,7 +2,7 @@ import React from 'react';
 
 const Skills = ({ skills = [], handleInputChange, addSkill, deleteSkill ,selectedTemplate,setSelectedTemplate}) => {
   return (
-    <div className="mt-10 px-20">
+    <div className="mt-10 px-20 text-xs sm:text-xs md:text-xs lg:text-xs">
       
       {skills.map((skill, index) => (
         <div key={index} className=" mt-4">
