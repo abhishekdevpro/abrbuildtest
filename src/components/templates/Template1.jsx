@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 const Template1 = ({
   data = {},
   boxBgColor,
@@ -102,84 +102,103 @@ const Template1 = ({
         {/* User details */}
 {details.map((del, index) => (
   <div key={index}>
-    <h3 className="text-xs sm:text-sm md:text-2xl lg:text-3xl text-cyan-600 font-bold ms-2 ">
+    <h3 className="text-xs sm:text-sm md:text-2xl lg:text-3xl text-cyan-600 font-bold ms- ">
       {del.name || predefinedText.details.name}
     </h3>
-    <p className="text-xs sm:text-sm md:text-xl lg:text-lg ms-2">
+    <p className="text-xs sm:text-sm md:text-xl lg:text-lg ms-">
       {del.Profession || predefinedText.details.profession}
     </p>
 
-    <ul className="flex  text-xs sm:text-sm md:text-sm lg:text-sm m-2 gap-2">
-      <li>{del.address || predefinedText.details.address}</li>
-      <li className={`${del.phoneNumber ? 'before:content-["●"] before:m-2 font' : ''}  break-all`}>
-        {del.phoneNumber || predefinedText.details.phoneNumber}
-      </li>
-      <li className={`${del.email ? 'before:content-["●"] before:m-2' : ''} w-2/2 break-all`}>
-        {del.email || predefinedText.details.email}
-      </li>
-      <li className={`${del.link ? 'before:content-["●"] before:m-2' : ''} w-2/2 break-all`}>
-        <a href={del.link || '#'}>{del.link || predefinedText.details.link}</a>
-      </li>
-      <li className={`${del.github ? 'before:content-["●"] before:m-2' : ''} w-2/2 break-all`}>
-        <a href={del.github || '#'}>{del.github || predefinedText.details.github}</a>
-      </li>
-      <li className={`${del.projects ? 'before:content-["●"] before:m-2' : ''} w-2/2 break-all`}>
-        <a href={del.projects || '#'}>{del.projects || predefinedText.details.projects}</a>
-      </li>
-    </ul>
+    <ul className="flex text-xs sm:text-xs md:text-xs lg:text-xs m-2 gap-12 font-semibold">
+  <li>
+    <FaMapMarkerAlt className="inline-block align-text-top mr-1" />
+    {del.address || predefinedText.details.address}
+  </li>
+  <li >
+    <FaPhoneAlt className="inline-block align-text-top mr-1" />
+    {del.phoneNumber || predefinedText.details.phoneNumber}
+  </li>
+  <li >
+    <FaEnvelope className="inline-block align-text-top mr-1" />
+    {del.email || predefinedText.details.email}
+  </li>
+  <li >
+    <FaLinkedin className="inline-block align-text-top mr-1" />
+    <a href={del.link || '#'} target="_blank" rel="noopener noreferrer">{del.link || predefinedText.details.link}</a>
+  </li>
+  <li >
+    <FaGithub className="inline-block align-text-top mr-1" />
+    <a href={del.github || '#'} target="_blank" rel="noopener noreferrer">{del.github || predefinedText.details.github}</a>
+  </li>
+  {/* Add more icons and links as needed */}
+</ul>
     {summary.length > 0 ? (
-              summary.map((sum, index) => (
-                <div key={index}>
-                  <p
-                    className={`${paragraphSpacingClass} text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
-                    dangerouslySetInnerHTML={{ __html: sum.summarydescription }}
-                  />
-                  <br />
-                </div>
-              ))
-            ) : (
-              <div>
-                <p
-                  className={`${paragraphSpacingClass} text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
-                  dangerouslySetInnerHTML={{ __html: predefinedText.summary.summarydescription }}
-                />
-                <br />
-              </div>
-            )}
+  summary.map((sum, index) => (
+    <div key={index}><div className='font-bold'>Summary</div>
+      <p
+        className={`${paragraphSpacingClass} text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
+        dangerouslySetInnerHTML={{ __html: sum.summarydescription.trim() || predefinedText.summary.summarydescription }}
+      />
+      <br />
+    </div>
+  ))
+) : (
+  <div>
+    <p
+      className={`${paragraphSpacingClass} text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
+      dangerouslySetInnerHTML={{ __html: predefinedText.summary.summarydescription }}
+    />
+    <br />
+  </div>
+)}
+
           </div>
         ))}
 
 
 
         {/* Rendering work experience */}
-<div>
+        <div>
   <h5 className="text-cyan-600 font-bold">WORK EXPERIENCE</h5>
   {experiences.map((exp, index) => (
     <div key={index}>
       <div className="flex justify-between">
         <h6 className="font-bold break-all">{exp.Company || predefinedText.experiences.company}</h6>
-        <p className=' text-xs sm:text-sm md:text-sm lg:text-sm'>{exp.month1} - {exp.month2}</p>
+        <p className="text-xs sm:text-sm md:text-sm lg:text-sm">{exp.month1} - {exp.month2}</p>
       </div>
       <div className="flex justify-between">
-        <h6 className=' text-xs sm:text-sm md:text-sm lg:text-sm'>{exp.role ||  predefinedText.experiences.role }</h6>
-        <p className=' text-xs sm:text-sm md:text-sm lg:text-sm'>{exp.companyplace ||  predefinedText.experiences.companyplace}</p>
+        <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm">{exp.role ||  predefinedText.experiences.role }</h6>
+        <p className="text-xs sm:text-xs md:text-xs lg:text-xs">{exp.companyplace ||  predefinedText.experiences.companyplace}</p>
       </div>
-      <ul className="m-2  text-xs sm:text-sm md:text-sm lg:text-sm">
-        {exp.companydescription && exp.companydescription || predefinedText.experiences.companydescription.split(/\r?\n/).map((line, i) => (
+      <ul className={`${exp.companydescription ? ' text-xs sm:text-xs md:text-xs lg:text-xs' : ''} w-2/2 break-all`}>
+        {exp.companydescription ? (
+          // If company description is provided, split by new lines and render each line as a list item
+          exp.companydescription.split(/\r?\n/).map((line, i) => (
+            <li
+              key={i}
+              className={`${paragraphSpacingClass} ${
+                line.trim() ? 'before:content-["•"] before:mr-1' : ''
+              } text-xs sm:text-xs md:text-xs lg:text-xs m-2 w-2/2 break-all`}
+              style={{ marginBottom: '4px' }} // Adjust margin bottom as needed
+            >
+              {line}
+            </li>
+          ))
+        ) : (
+          // Otherwise, render predefinedText.experiences.companydescription
           <li
-            key={i}
-            className={`${paragraphSpacingClass} ${
-              line.trim() ? 'before:content-["•"] before:mr-1' : ''
-            }  text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
+            className={`${paragraphSpacingClass} text-xs sm:text-xs md:text-xs lg:text-xs m-2 w-2/2 break-all`}
+            style={{ marginBottom: '4px' }} // Adjust margin bottom as needed
           >
-            {line}
+            {predefinedText.experiences.companydescription}
           </li>
-        ))}
+        )}
       </ul>
       <br />
     </div>
   ))}
 </div>
+
 
 
         {/* Rendering education */}
@@ -192,12 +211,12 @@ const Template1 = ({
           <div key={index}>
             <div className="flex justify-between">
               <h6 className="font-bold break-all">{edu.schoolname || predefinedText.educations.schoolname}</h6>
-              <p className=' text-xs sm:text-sm md:text-sm lg:text-sm'>{edu.edmonth1} - {edu.edmonth2}</p>
+              <p className=' text-xs text-xs sm:text-xs md:text-xs lg:text-xs'>{edu.edmonth1} - {edu.edmonth2}</p>
             </div>
             <div className="flex justify-between  text-xs sm:text-sm md:text-sm lg:text-sm">
               <h6>{edu.schoolplace || predefinedText.educations.schoolplace}</h6>
             </div>
-            <p className=' text-xs sm:text-sm md:text-sm lg:text-sm'>{edu.coursename  || predefinedText.educations.coursename}</p>
+            <p className=' text-xs sm:text-xs md:text-xs lg:text-xs'>{edu.coursename  || predefinedText.educations.coursename}</p>
           </div>
         ))}
 
@@ -207,12 +226,20 @@ const Template1 = ({
           <h5 className="text-cyan-600 font-bold">SKILLS</h5>
           <div className="flex-grow border-t border-gray-300 align-super"></div>
         </div>
-        {skills.map((skill, index) => (
-          <div key={index} className="flex mt-3">
-            <span className="font-bold text-xs sm:text-sm w-32">{skill.skillname  || predefinedText.skills.skillname}</span>
-            <h6 className="text-xs sm:text-sm">{skill.skilldetails || predefinedText.skills.skilldetails}</h6>
-          </div>
-        ))}
+        <div className="flex flex-wrap gap-16">
+  {skills.map((skill, index) => (
+    <span key={index} className="flex items-center text-xs sm:text-xs md:text-xs lg:text-xs mr-2 mt-2 gap-16">
+      <p className={`${skill.skillname ? 'before:content-["●"] before:m-2 font' : ''} break-all`}>
+        {skill.skillname || predefinedText.skills.skillname}
+      </p>
+      <p className={`${skill.skilldetails ? 'before:content-["●"] before:m-2' : 'ms-2'} w-auto break-all`}>
+        {skill.skilldetails || predefinedText.skills.skilldetails}
+      </p>
+    </span>
+  ))}
+</div>
+
+        
 
         {/* Rendering additional sections */}
         <div className="page-break"></div>

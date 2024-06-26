@@ -43,14 +43,14 @@ const predefinedText = {
   details: {
     name: 'First Last (Name)',
     profession: 'Health and Safety Officer',
-    address: 'Atlanta, Georgia',
+    address: ' Atlanta, Georgia',
     phoneNumber: ' +1-234-456-789',
     email: ' resume@.com',
-    link: ' linkedin.com',
+    link: 'linkedin.com',
    
   },
   summary:{
-    summarydescription:'Health and safety officer with 8 years of experience developing safety policies and procedures that protect employees and encourage compliance with government regulations. Key achievement: conducted 53+ inspections to ensure 100% compliance with OSHA regulations and developed corrective action plans for non-compliance. '
+    summarydescription:`Health and safety officer with 8 years of experience developing safety policies and procedures that protect employees and encourage compliance with government regulations. Key achievement: conducted 53+ inspections to ensure 100% compliance with OSHA regulations and developed corrective action plans for non-compliance.`
   },
   experiences: {
     company: 'Resume Worded, New York, NY  ',
@@ -65,8 +65,8 @@ const predefinedText = {
     },
 
   skills: { 
-    skillname: 'Technical Skills', 
-    skilldetails: 'Industry Knowledge'
+    skillname: '● Technical Skills', 
+    skilldetails: '● Industry Knowledge'
    },
   
 };

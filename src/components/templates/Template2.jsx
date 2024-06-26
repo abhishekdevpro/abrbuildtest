@@ -85,27 +85,52 @@ const Template2 = ({
               {summary.map((sum, index) => (
                 <div key={index}>
                 <p
-                  className={`${paragraphSpacingClass} text-xs sm:text-sm md:text-sm lg:text-sm m-2 w-2/2 break-all`}
+                  className={`${paragraphSpacingClass} text-xs sm:text-xs md:text-xs lg:text-xs m-2 w-2/2 break-all`}
                   dangerouslySetInnerHTML={{ __html: sum.summarydescription || predefinedText.summary.summarydescription }}
                 />
-                <br />
+               
               </div>
               ))}
               
               <h5 className='text-blue-800 '>WORK EXPERIENCE </h5><br />
               <div className="flex-grow border-t border-gray-300 align-super"></div>
               {experiences.map((exp, index) => (
-                <div key={index}>
-                  <div className='flex justify-between mt-4'>
-                    <h6 className='font-bold'>{exp.Company || predefinedText.experiences.company}</h6>
-                    <p>{exp.month1}- {exp.month2}</p>
+                  <div key={index}>
+                  <div className="flex justify-between mt-2">
+                    <h6 className="font-bold break-all text-xs sm:text-sm md:text-sm lg:text-sm my-2">{exp.Company || predefinedText.experiences.company}</h6>
+                    <p className="text-xs sm:text-xs md:text-xs lg:text-xs my-2">{exp.month1} - {exp.month2}</p>
                   </div>
-                  <h6>{exp.role ||  predefinedText.experiences.role }</h6>
-                  <ul className='m-2'>
-                    <li>{exp.companydescription || predefinedText.experiences.companydescription}</li>
+                  <div className="flex justify-between">
+                    <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm">{exp.role ||  predefinedText.experiences.role }</h6>
+                    <p className="text-xs sm:text-xs md:text-xs lg:text-xs">{exp.companyplace ||  predefinedText.experiences.companyplace}</p>
+                  </div>
+                  <ul className={`${exp.companydescription ? ' text-xs sm:text-xs md:text-xs lg:text-xs' : ''} w-2/2 break-all`}>
+                    {exp.companydescription ? (
+                      // If company description is provided, split by new lines and render each line as a list item
+                      exp.companydescription.split(/\r?\n/).map((line, i) => (
+                        <li
+                          key={i}
+                          className={`${paragraphSpacingClass} ${
+                            line.trim() ? 'before:content-["•"] before:mr-1' : ''
+                          } text-xs sm:text-xs md:text-xs lg:text-xs m-2 w-2/2 break-all`}
+                          style={{ marginBottom: '4px' }} // Adjust margin bottom as needed
+                        >
+                          {line}
+                        </li>
+                      ))
+                    ) : (
+                      // Otherwise, render predefinedText.experiences.companydescription
+                      <li
+                        className={`${paragraphSpacingClass} text-xs sm:text-xs md:text-xs lg:text-xs m-2 w-2/2 break-all`}
+                        style={{ marginBottom: '4px' }} // Adjust margin bottom as needed
+                      >
+                        {predefinedText.experiences.companydescription}
+                      </li>
+                    )}
                   </ul>
                   <br />
                 </div>
+            
               ))}
             </div>
           ))}
